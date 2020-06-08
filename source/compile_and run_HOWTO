@@ -1,0 +1,20 @@
+
+# Metacentrum modules load
+source ./modules.sh
+
+# edit file configure_compilers.sh to define path to compilers and type
+source ./configure_compilers.sh
+
+# compilation and build executables 
+make clean
+make 
+
+
+cd ../run
+# run UI script to create dir structure and input files
+./EMPM_ui.py
+
+# edit path to mpirun in mpi_openmp_set.sh and set # of MPI procs and OpenMP threads 
+
+# run EMPM calculation 
+./run.sh
