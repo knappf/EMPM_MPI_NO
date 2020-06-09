@@ -133,13 +133,13 @@
       open(12,file=fnameo,status='unknown',form='unformatted')
 
       open(3,file=fnamev,status='old',form='unformatted')
-!      open(4,file=fnamevm,status='old',form='unformatted')
+      open(4,file=fnamevm,status='old',form='unformatted')
 
-!      allocate(vintm(nfons))
-!      vintm=0.d0
-!      do while (.not.eof(4))
-!        read(4)isi,vintm(isi)
-!      enddo
+      allocate(vintm(nfons))
+      vintm=0.d0
+      do while (.not.eof(4))
+        read(4)isi,vintm(isi)
+      enddo
 
   
       allocate (ipoza(nfong),ipozinv(nfong))
@@ -228,10 +228,9 @@
            igi=xcc(ii,kk)%ig
 
             vint(i)=vint(i)+xcc(ii,kk)%am*vred(igi,isi,ipoza(jj))
-!          if (igi.eq.jj) then 
-!            vint(i)=vint(i)+xcc(ii,kk)%am*
-!     *vintm(isi)       
-!          endif
+          if (igi.eq.jj) then 
+            vint(i)=vint(i)+xcc(ii,kk)%am*vintm(isi)       
+          endif
 
 
             enddo
