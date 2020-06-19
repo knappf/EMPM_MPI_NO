@@ -30,6 +30,7 @@ subroutine ham(ndim,ndimr,no,nor,ns,irow,wr,xr,vr,ipar,jcal,mxtr,phonbs,nx,h_cor
       integer, dimension (:), allocatable :: ind_red
       logical :: decoup_cm
 
+!      test git
 
 !c      allocate(mxt(ndimr))
 !c      mxt=0
