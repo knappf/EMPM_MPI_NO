@@ -109,13 +109,13 @@
       namefph='V_phon_h_p.dat'
 
  
-      call read_input_par(ihp_min,ihp_max,ihn_min,ihn_max,ipp_min,ipp_max,ipn_min,ipn_max,isi_max,ndla_max,ndla2_max)
+      call read_input_par(ihp_min,ihp_max,ihn_min,ihn_max,ipp_min,ipp_max,ipn_min,ipn_max,isi_max,ndla_max)
 
 !      write(*,*)ihp_min,ihp_max,ihn_min,ihn_max,ipp_min,ipp_max,ipn_min,ipn_max,isi_max,ndla_max
       ndla=ndla_max
       nsi=2*isi_max
 
-      ndla2=ndla2_max
+      ndla2=ndla_max
 
 !      allocate(h_corr(ndla2))
 
@@ -234,7 +234,7 @@
             call readro('1f_rnh.dat',ia,ronh,nronh)
             call readro('1f_rph.dat',ia,roph,nroph)
             iaold=ia
-            call redrsum(ndla2,ronp,nronp,ropp,nropp,ronh,nronh,roph,nroph,ipozbr,ndbr)
+            call redrsum(ndla,ronp,nronp,ropp,nropp,ronh,nronh,roph,nroph,ipozbr,ndbr)
 
         endif
 
@@ -530,7 +530,7 @@
 
       character(len=30)fname
 
-      ndipo=20000
+      ndipo=1000
 
       if (.not.allocated(ipozbr)) allocate(ipozbr(4,ifonmx,ndipo))
       ipozbr=0
@@ -545,7 +545,7 @@
        ndbr(1,ibt)=ndbr(1,ibt)+1
 
         if (ndbr(1,ibt).gt.ndipo) then
-               write(*,*)' Increase dimension in redrsum'
+              write(*,*)' Increase dimension in redrsum'
                stop
             endif
        ipozbr(1,ibt,ndbr(1,ibt))=i
@@ -847,9 +847,9 @@
 
       end subroutine loadsp
 !
-      subroutine  read_input_par(ihp_min,ihp_max,ihn_min,ihn_max,ipp_min,ipp_max,ipn_min,ipn_max,isi_max,ndla_max,ndla2_max)
+      subroutine  read_input_par(ihp_min,ihp_max,ihn_min,ihn_max,ipp_min,ipp_max,ipn_min,ipn_max,isi_max,ndla_max)
 
-
+      implicit double precision (a-h,o-z) 
       include 'formats_eqm.inc'
 
       character*30 name1f
@@ -878,16 +878,6 @@
       enddo
 
       ndla_max=i
-
-      name1f='2phonon/2f_states.dat'
-
-      open (3,file=name1f,status='old',form='unformatted')
-
-      do while (.not.eof(3))
-       read(3)i,ipar,ijj,en
-      enddo
-
-      ndla2_max=i
 
 
       close(3)
@@ -994,7 +984,7 @@
 
       character(len=30)fname
 
-      ndipo=100
+      ndipo=1000
 
       if (.not.allocated(ipozbr)) allocate(ipozbr(iamax,ifonmx,ndipo))
       ipozbr=0
