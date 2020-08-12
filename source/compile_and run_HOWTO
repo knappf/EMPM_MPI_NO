@@ -1,6 +1,9 @@
 
 # Metacentrum modules load
 source ./modules.sh
+# setup of Intel Fortran env. variables and MKL paths
+source ./env.sh
+# 
 
 # edit file configure_compilers.sh to define path to compilers and type
 source ./configure_compilers.sh
