@@ -440,8 +440,7 @@ outputfile11.write('#  ******** IMPORTANT **************************************
 outputfile11.write('#  MPI version crashes for specific number of MPI porcesses, try to use smaller number if possible \n')
 outputfile11.write('cd eqm2_MPI/\n')
 outputfile11.write('source ../mpi_openmp_set.sh\n')
-outputfile11.write('#mpirun -np $NUM_MPI_PROCS ./phon_int_MPI > log_phon_int 2>error_phon_int    \n')
-outputfile11.write('mpirun -np 4 ./phon_int_MPI > log_phon_int 2>error\n')
+outputfile11.write('mpirun -np $NUM_MPI_PROCS ./phon_int_MPI > log_phon_int 2>error\n')
 outputfile11.close()
 
 print ('Creations of the folders and copy of the inputs files')
