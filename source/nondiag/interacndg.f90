@@ -135,7 +135,7 @@ subroutine vintn01(nf,ipcal,jcal,levn,levp)
               do i1=ihpmn,ihpmx
                  ji1=levp(i1)%j
                 campn=camp(isi,jj)%am
-                vint=vint+0.5d0*(dfloat(ji1+1))**0.5d0*campn*fp(0,ih,ip,i1,i1)
+                vint=vint+(dfloat(ji1+1))**0.5d0*campn*fp(0,ih,ip,i1,i1)
               enddo
               do i1=ihnmn,ihnmx
                  ji1=levn(i1)%j
@@ -157,7 +157,7 @@ subroutine vintn01(nf,ipcal,jcal,levn,levp)
                  do i1=ihnmn,ihnmx
                       ji1=levn(i1)%j
                        campn=camn(isi,jj)%am
-                       vint=vint+0.5d0*(dfloat(ji1+1))**0.5d0*campn*fn(0,ih,ip,i1,i1)
+                       vint=vint+(dfloat(ji1+1))**0.5d0*campn*fn(0,ih,ip,i1,i1)
                  enddo
 
                  do i1=ihpmn,ihpmx
@@ -395,7 +395,7 @@ character*30 namefp,namefn,namefpn,namecp,namecn,namerpp,namernp,namerph,namernh
            ih=camp(isi,jj)%hol
 !c           jp=lev(ip)%j
            campn=camp(isi,jj)%am
-           vint=vint+0.5d0*campn*fp(jisi,ip,ih,i1,i2)*ropp(iropp(ii))%ro
+           vint=vint+campn*fp(jisi,ip,ih,i1,i2)*ropp(iropp(ii))%ro
 
          enddo
 
@@ -421,7 +421,7 @@ character*30 namefp,namefn,namefpn,namecp,namecn,namerpp,namernp,namerph,namernh
            ih=camp(isi,jj)%hol
 !           jp=lev(ip)%j
            campn=camp(isi,jj)%am
-           vint=vint+0.5d0*campn*fp(jisi,ip,ih,i1,i2)*roph(iroph(ii))%ro
+           vint=vint+campn*fp(jisi,ip,ih,i1,i2)*roph(iroph(ii))%ro
          enddo
 
          do jj=1,ndcamn(isi)
@@ -448,7 +448,7 @@ character*30 namefp,namefn,namefpn,namecp,namecn,namerpp,namernp,namerph,namernh
            ih=camn(isi,jj)%hol
 !           jp=lev(ip)%j
            campn=camn(isi,jj)%am
-           vint=vint+0.5d0*campn*fn(jisi,ip,ih,i1,i2)*ronp(ironp(ii))%ro
+           vint=vint+campn*fn(jisi,ip,ih,i1,i2)*ronp(ironp(ii))%ro
 
          enddo
 
@@ -475,7 +475,7 @@ character*30 namefp,namefn,namefpn,namecp,namecn,namerpp,namernp,namerph,namernh
            ih=camn(isi,jj)%hol
 !           jp=lev(ip)%j
            campn=camn(isi,jj)%am
-           vint=vint+0.5d0*campn*fn(jisi,ip,ih,i1,i2)*ronh(ironh(ii))%ro
+           vint=vint+campn*fn(jisi,ip,ih,i1,i2)*ronh(ironh(ii))%ro
          enddo
 
          do jj=1,ndcamp(isi)
@@ -819,7 +819,7 @@ if(idimph(jia).ne.nroph) stop
                           ih=camp(isi,jj)%hol
                !c           jp=lev(ip)%j
                           campn=camp(isi,jj)%am
-                          vint(ig)=vint(ig)+0.5d0*campn*fp(jisi,ip,ih,i1,i2)*ropp(ii)
+                          vint(ig)=vint(ig)+campn*fp(jisi,ip,ih,i1,i2)*ropp(ii)
                         enddo
                
                         do jj=1,ndcamn(isi)
@@ -851,7 +851,7 @@ if(idimph(jia).ne.nroph) stop
                           ih=camn(isi,jj)%hol
                !           jp=lev(ip)%j
                           campn=camn(isi,jj)%am
-                          vint(ig)=vint(ig)+0.5d0*campn*fn(jisi,ip,ih,i1,i2)*ronp(ii)
+                          vint(ig)=vint(ig)+campn*fn(jisi,ip,ih,i1,i2)*ronp(ii)
                
                         enddo
                
@@ -883,7 +883,7 @@ if(idimph(jia).ne.nroph) stop
                           ih=camp(isi,jj)%hol
                !           jp=lev(ip)%j
                           campn=camp(isi,jj)%am
-                          vint(ig)=vint(ig)+0.5d0*campn*fp(jisi,ip,ih,i1,i2)*roph(ii)
+                          vint(ig)=vint(ig)+campn*fp(jisi,ip,ih,i1,i2)*roph(ii)
                    enddo
                
                         do jj=1,ndcamn(isi)
@@ -913,7 +913,7 @@ if(idimph(jia).ne.nroph) stop
                           ih=camn(isi,jj)%hol
                !           jp=lev(ip)%j
                           campn=camn(isi,jj)%am
-                          vint(ig)=vint(ig)+0.5d0*campn*fn(jisi,ip,ih,i1,i2)*ronh(ii)
+                          vint(ig)=vint(ig)+campn*fn(jisi,ip,ih,i1,i2)*ronh(ii)
                         enddo
                
                         do jj=1,ndcamp(isi)
