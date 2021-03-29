@@ -395,7 +395,7 @@ character*30 namefp,namefn,namefpn,namecp,namecn,namerpp,namernp,namerph,namernh
            ih=camp(isi,jj)%hol
 !c           jp=lev(ip)%j
            campn=camp(isi,jj)%am
-           vint=vint+campn*fp(jisi,ip,ih,i1,i2)*ropp(iropp(ii))%ro
+           vint=vint+0.5d0*campn*fp(jisi,ip,ih,i1,i2)*ropp(iropp(ii))%ro
 
          enddo
 
@@ -421,7 +421,7 @@ character*30 namefp,namefn,namefpn,namecp,namecn,namerpp,namernp,namerph,namernh
            ih=camp(isi,jj)%hol
 !           jp=lev(ip)%j
            campn=camp(isi,jj)%am
-           vint=vint+campn*fp(jisi,ip,ih,i1,i2)*roph(iroph(ii))%ro
+           vint=vint+0.5d0*campn*fp(jisi,ip,ih,i1,i2)*roph(iroph(ii))%ro
          enddo
 
          do jj=1,ndcamn(isi)
@@ -448,7 +448,7 @@ character*30 namefp,namefn,namefpn,namecp,namecn,namerpp,namernp,namerph,namernh
            ih=camn(isi,jj)%hol
 !           jp=lev(ip)%j
            campn=camn(isi,jj)%am
-           vint=vint+campn*fn(jisi,ip,ih,i1,i2)*ronp(ironp(ii))%ro
+           vint=vint+0.5d0*campn*fn(jisi,ip,ih,i1,i2)*ronp(ironp(ii))%ro
 
          enddo
 
@@ -475,7 +475,7 @@ character*30 namefp,namefn,namefpn,namecp,namecn,namerpp,namernp,namerph,namernh
            ih=camn(isi,jj)%hol
 !           jp=lev(ip)%j
            campn=camn(isi,jj)%am
-           vint=vint+campn*fn(jisi,ip,ih,i1,i2)*ronh(ironh(ii))%ro
+           vint=vint+0.5d0*campn*fn(jisi,ip,ih,i1,i2)*ronh(ironh(ii))%ro
          enddo
 
          do jj=1,ndcamp(isi)
